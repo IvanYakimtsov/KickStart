@@ -11,11 +11,11 @@ public class CoordinateParser {
 
 
 
-    public double[] parseCoordinates(String input) throws InvalidParametersException {
-        if (!triangleValidator.isValidInput(input)) {
+    public double[] parseCoordinates(String triangleInput) throws InvalidParametersException {
+        if (!triangleValidator.isValidInput(triangleInput)) {
             throw new InvalidParametersException("invalid input");
         }
-        String[] integerStrings = input.split(SEPARATOR);
+        String[] integerStrings = triangleInput.split(SEPARATOR);
         double[] doubles = new double[integerStrings.length];
         for (int i = 0; i < doubles.length; i++) {
             doubles[i] = Double.parseDouble(integerStrings[i]);

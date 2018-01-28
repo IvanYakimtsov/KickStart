@@ -10,12 +10,21 @@ import com.yakimtsov.kickstart.reader.TriangleReader;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -23,6 +32,29 @@ import java.util.List;
  */
 public class ComplexTest {
     private static Logger logger = LogManager.getLogger();
+    File file;
+
+    @BeforeClass
+    public void setUp() {
+        file = new File("test_data.txt");
+
+        List<String> lines = Arrays.asList("1.0 1.0 0.0 0.0 2.0 2.0",
+                "3.0 2.0", "4.0 4.0", "1.0 1.0 0.0 0.0 1.0 5.0");
+        try {
+            if(file.createNewFile()){
+                Path path = Paths.get(file.getPath());
+                Files.write(path , lines, Charset.forName("UTF-8"));
+            }
+
+        } catch (IOException e) {
+            fail(e.getMessage());
+        }
+    }
+
+    @AfterClass
+    public void clear() {
+        file.delete();
+    }
 
     @Test
     public void complexTest1() {
@@ -34,7 +66,7 @@ public class ComplexTest {
         TriangleCreator triangleCreator = new TriangleCreator();
         CoordinateParser coordinateParser = new CoordinateParser();
         try {
-            List<String> input = triangleReader.read("Data/test_input_data.txt");
+            List<String> input = triangleReader.read(file.getAbsolutePath());
             List<Triangle> actualTriangleList = new ArrayList<>();
             Triangle expectedTriangle = new Triangle(point1,point2,point3);
             expectedTriangleList.add(expectedTriangle);

@@ -11,6 +11,10 @@ public class Main {
         Point point1 = new Point(1,1);
         Point point2 = new Point(0,0);
         Point point3 = new Point(2,0);
+        int a = 31;
+        float b = 4.0f;
+        a /= b;
+        System.out.println(a);
         Triangle triangle = null;
         try {
             triangle = new Triangle(point1,point2,point3);

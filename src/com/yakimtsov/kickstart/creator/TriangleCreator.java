@@ -11,14 +11,14 @@ public class TriangleCreator {
 
     private final int AMOUNT_OF_PARAMETERS = 6;
 
-    public Triangle createTriangle(double[] parameters) throws InvalidParametersException {
-        if (parameters.length != AMOUNT_OF_PARAMETERS) {
+    public Triangle createTriangle(double[] triangleParameters) throws InvalidParametersException {
+        if (triangleParameters.length != AMOUNT_OF_PARAMETERS) {
             throw new InvalidParametersException("invalid parameters");
         }
 
-        Point firstPoint = new Point(parameters[0],parameters[1]);
-        Point secondPoint = new Point(parameters[2],parameters[3]);
-        Point thirdPoint = new Point(parameters[4],parameters[5]);
+        Point firstPoint = new Point(triangleParameters[0],triangleParameters[1]);
+        Point secondPoint = new Point(triangleParameters[2],triangleParameters[3]);
+        Point thirdPoint = new Point(triangleParameters[4],triangleParameters[5]);
 
         return new Triangle(firstPoint,secondPoint,thirdPoint);
     }
