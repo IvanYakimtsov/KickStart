@@ -12,7 +12,7 @@ import static org.testng.Assert.fail;
 /**
  * Created by Ivan on 21.01.2018.
  */
-public class TestTriangleUtil {
+public class TriangleUtilTest {
 
     @Test
     public void findTrianglePerimeterTest1(){
@@ -21,7 +21,7 @@ public class TestTriangleUtil {
         Point thirdPoint = new Point(3,0);
         try {
             Triangle triangle = new Triangle(firstPoint,secondPoint,thirdPoint);
-            double result = TriangleUtil.findTrianglePerimeter(triangle);
+            double result = TriangleUtil.calculateTrianglePerimeter(triangle);
             assertEquals(result,8.605,0.01);
         } catch (InvalidParametersException e) {
             fail();
@@ -35,7 +35,7 @@ public class TestTriangleUtil {
         Point thirdPoint = new Point(0,-1);
         try {
             Triangle triangle = new Triangle(firstPoint,secondPoint,thirdPoint);
-            double result = TriangleUtil.findTrianglePerimeter(triangle);
+            double result = TriangleUtil.calculateTrianglePerimeter(triangle);
             assertEquals(result,6.472,0.01);
         } catch (InvalidParametersException e) {
             fail();
@@ -46,7 +46,7 @@ public class TestTriangleUtil {
     public void findSideSizeTest1(){
         Point firstPoint = new Point(0,0);
         Point secondPoint = new Point(0,2);
-        double result = TriangleUtil.findSideSize(firstPoint,secondPoint);
+        double result = TriangleUtil.calculateSideSize(firstPoint,secondPoint);
         assertEquals(result,2,0.01);
     }
 
@@ -54,7 +54,7 @@ public class TestTriangleUtil {
     public void findSideSizeTest2(){
         Point firstPoint = new Point(0,-1);
         Point secondPoint = new Point(-1,1);
-        double result = TriangleUtil.findSideSize(firstPoint,secondPoint);
+        double result = TriangleUtil.calculateSideSize(firstPoint,secondPoint);
         assertEquals(result,2.236,0.01);
     }
 
@@ -109,7 +109,7 @@ public class TestTriangleUtil {
         Point thirdPoint = new Point(3,0);
         try {
             Triangle triangle = new Triangle(firstPoint,secondPoint,thirdPoint);
-            double result = TriangleUtil.findTriangleArea(triangle);
+            double result = TriangleUtil.calculateTriangleArea(triangle);
             assertEquals(result,3,0.00001);
         } catch (InvalidParametersException e) {
             fail();
@@ -124,7 +124,7 @@ public class TestTriangleUtil {
         Point thirdPoint = new Point(-4,0);
         try {
             Triangle triangle = new Triangle(firstPoint,secondPoint,thirdPoint);
-            double result = TriangleUtil.findTriangleArea(triangle);
+            double result = TriangleUtil.calculateTriangleArea(triangle);
             assertEquals(4,result,0.00001);
         } catch (InvalidParametersException e) {
             fail();
@@ -138,7 +138,7 @@ public class TestTriangleUtil {
         Point thirdPoint = new Point(0,-1);
         try {
             Triangle triangle = new Triangle(firstPoint,secondPoint,thirdPoint);
-            double result = TriangleUtil.findTriangleArea(triangle);
+            double result = TriangleUtil.calculateTriangleArea(triangle);
             assertEquals(2,result,0.00001);
         } catch (InvalidParametersException e) {
             fail();

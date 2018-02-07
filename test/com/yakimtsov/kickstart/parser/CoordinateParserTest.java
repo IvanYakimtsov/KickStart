@@ -10,7 +10,7 @@ import static org.testng.Assert.fail;
 /**
  * Created by Ivan on 21.01.2018.
  */
-public class TestCoordinateParser {
+public class CoordinateParserTest {
 
     CoordinateParser coordinateParser = new CoordinateParser();
 

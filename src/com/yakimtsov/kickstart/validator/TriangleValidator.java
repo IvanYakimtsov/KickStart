@@ -1,5 +1,8 @@
 package com.yakimtsov.kickstart.validator;
 
+import com.yakimtsov.kickstart.entity.Triangle;
+
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,9 +11,11 @@ import java.util.regex.Pattern;
  */
 public class TriangleValidator {
     private final String VALID_TRIANGLE_INPUT = "^(\\s*-?\\d+\\.\\d+\\s-?\\d+\\.\\d+){3}\\s*$";
+
     public boolean isValidInput(String triangleInput) {
         Pattern pattern = Pattern.compile(VALID_TRIANGLE_INPUT);
         Matcher matcher = pattern.matcher(triangleInput);
         return matcher.matches();
     }
+
 }

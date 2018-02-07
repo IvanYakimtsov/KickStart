@@ -3,31 +3,30 @@ package com.yakimtsov.kickstart.action;
 import com.sun.istack.internal.NotNull;
 import com.yakimtsov.kickstart.entity.Point;
 import com.yakimtsov.kickstart.entity.Triangle;
-import com.yakimtsov.kickstart.exception.InvalidParametersException;
 
 /**
  * Created by Ivan on 20.01.2018.
  */
 public class TriangleUtil {
 
-    public static double findTrianglePerimeter(@NotNull Triangle triangle) {
-        double firstSide = findSideSize(triangle.getFirstPoint(), triangle.getSecondPoint());
-        double secondSide = findSideSize(triangle.getSecondPoint(), triangle.getThirdPoint());
-        double thirdSide = findSideSize(triangle.getThirdPoint(), triangle.getFirstPoint());
+    public static double calculateTrianglePerimeter(@NotNull Triangle triangle) {
+        double firstSide = calculateSideSize(triangle.getFirstPoint(), triangle.getSecondPoint());
+        double secondSide = calculateSideSize(triangle.getSecondPoint(), triangle.getThirdPoint());
+        double thirdSide = calculateSideSize(triangle.getThirdPoint(), triangle.getFirstPoint());
         return firstSide + secondSide + thirdSide;
     }
 
 
-    public static double findSideSize(@NotNull Point firstPoint, @NotNull Point secondPoint) {
+    public static double calculateSideSize(@NotNull Point firstPoint, @NotNull Point secondPoint) {
         double deltaX = Math.pow(secondPoint.getX() - firstPoint.getX(), 2);
         double deltaY = Math.pow(secondPoint.getY() - firstPoint.getY(), 2);
         return Math.sqrt(deltaX + deltaY);
     }
 
     public static boolean isRightTriangle(@NotNull Triangle triangle) {
-        double firstSide = TriangleUtil.findSideSize(triangle.getFirstPoint(), triangle.getSecondPoint());
-        double secondSide = TriangleUtil.findSideSize(triangle.getSecondPoint(), triangle.getThirdPoint());
-        double thirdSide = TriangleUtil.findSideSize(triangle.getThirdPoint(), triangle.getFirstPoint());
+        double firstSide = TriangleUtil.calculateSideSize(triangle.getFirstPoint(), triangle.getSecondPoint());
+        double secondSide = TriangleUtil.calculateSideSize(triangle.getSecondPoint(), triangle.getThirdPoint());
+        double thirdSide = TriangleUtil.calculateSideSize(triangle.getThirdPoint(), triangle.getFirstPoint());
 
         boolean firstCondition = (firstSide == Math.hypot(secondSide, thirdSide));
         boolean secondCondition = (secondSide == Math.hypot(firstSide, thirdSide));
@@ -47,12 +46,12 @@ public class TriangleUtil {
         return (firstVectorX / secondVectorX) != (firstVectorY / secondVectorY);
     }
 
-    public static double findTriangleArea(@NotNull Triangle triangle) {
-        double halfPerimeter = TriangleUtil.findTrianglePerimeter(triangle) / 2;
+    public static double calculateTriangleArea(@NotNull Triangle triangle) {
+        double halfPerimeter = TriangleUtil.calculateTrianglePerimeter(triangle) / 2;
 
-        double firstSide = TriangleUtil.findSideSize(triangle.getFirstPoint(), triangle.getSecondPoint());
-        double secondSide = TriangleUtil.findSideSize(triangle.getSecondPoint(), triangle.getThirdPoint());
-        double thirdSide = TriangleUtil.findSideSize(triangle.getThirdPoint(), triangle.getFirstPoint());
+        double firstSide = TriangleUtil.calculateSideSize(triangle.getFirstPoint(), triangle.getSecondPoint());
+        double secondSide = TriangleUtil.calculateSideSize(triangle.getSecondPoint(), triangle.getThirdPoint());
+        double thirdSide = TriangleUtil.calculateSideSize(triangle.getThirdPoint(), triangle.getFirstPoint());
 
         return Math.sqrt(halfPerimeter * (halfPerimeter - firstSide) * (halfPerimeter - secondSide) * (halfPerimeter - thirdSide));
     }

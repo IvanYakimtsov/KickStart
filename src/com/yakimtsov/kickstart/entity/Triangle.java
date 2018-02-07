@@ -1,9 +1,10 @@
 package com.yakimtsov.kickstart.entity;
 
 import com.yakimtsov.kickstart.action.TriangleUtil;
-import com.yakimtsov.kickstart.entity.observer.ObservableTriangle;
-import com.yakimtsov.kickstart.entity.observer.TriangleObserver;
-import com.yakimtsov.kickstart.entity.observer.TriangleRecorder;
+import com.yakimtsov.kickstart.observer.ObservableTriangle;
+import com.yakimtsov.kickstart.observer.TriangleObserver;
+import com.yakimtsov.kickstart.observer.TriangleRecorder;
+import com.yakimtsov.kickstart.repository.impl.Repository;
 import com.yakimtsov.kickstart.exception.InvalidParametersException;
 
 import java.util.HashSet;
@@ -31,8 +32,10 @@ public class Triangle implements ObservableTriangle {
         this.secondPoint = secondPoint;
         this.thirdPoint = thirdPoint;
 
+        addObserver(new TriangleRecorder());
         this.id = UUID.randomUUID().getMostSignificantBits();
-        addObserver(TriangleRecorder.getInstance());
+
+        Repository.getInstance().add(this);
         notifyObservers();
     }
 
@@ -97,6 +100,11 @@ public class Triangle implements ObservableTriangle {
     @Override
     public void removeObserver(TriangleObserver triangleObserver) {
         triangleObservers.remove(triangleObserver);
+    }
+
+    @Override
+    public void removeObservers() {
+        triangleObservers.clear();
     }
 
     @Override

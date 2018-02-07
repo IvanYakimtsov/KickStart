@@ -16,10 +16,19 @@ public class TriangleCreator {
             throw new InvalidParametersException("invalid parameters");
         }
 
-        Point firstPoint = new Point(triangleParameters[0],triangleParameters[1]);
-        Point secondPoint = new Point(triangleParameters[2],triangleParameters[3]);
-        Point thirdPoint = new Point(triangleParameters[4],triangleParameters[5]);
+        Point firstPoint = new Point(triangleParameters[Coordinates.X1.ordinal()],
+                triangleParameters[Coordinates.Y1.ordinal()]);
+        Point secondPoint = new Point(triangleParameters[Coordinates.X2.ordinal()],
+                triangleParameters[Coordinates.Y2.ordinal()]);
+        Point thirdPoint = new Point(triangleParameters[Coordinates.X3.ordinal()],
+                triangleParameters[Coordinates.Y3.ordinal()]);
 
-        return new Triangle(firstPoint,secondPoint,thirdPoint);
+        Triangle triangle = new Triangle(firstPoint, secondPoint, thirdPoint);
+
+        return triangle;
+    }
+
+    private enum Coordinates {
+        X1, Y1, X2, Y2, X3, Y3
     }
 }

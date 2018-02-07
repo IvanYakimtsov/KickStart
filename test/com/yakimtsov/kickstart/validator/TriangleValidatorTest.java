@@ -7,7 +7,7 @@ import static org.testng.AssertJUnit.assertEquals;
 /**
  * Created by Ivan on 21.01.2018.
  */
-public class TestTriangleValidator {
+public class TriangleValidatorTest {
     TriangleValidator triangleValidator = new TriangleValidator();
     @Test
     public void isValidInputPositive(){

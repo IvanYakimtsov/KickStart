@@ -1,6 +1,7 @@
 package com.yakimtsov.kickstart.reader;
 
 import com.yakimtsov.kickstart.exception.IncorrectFileException;
+import com.yakimtsov.kickstart.validator.TriangleValidator;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -21,7 +22,7 @@ import static org.testng.Assert.fail;
 /**
  * Created by Ivan on 21.01.2018.
  */
-public class TestTriangleReader {
+public class TestTriangleReaderTest {
     TriangleReader triangleReader = new TriangleReader();
     File file;
     File emptyFile;
@@ -62,6 +63,7 @@ public class TestTriangleReader {
         }
 
         assertEquals(4, input.size());
+
     }
 
     @Test(expectedExceptions = IncorrectFileException.class)
